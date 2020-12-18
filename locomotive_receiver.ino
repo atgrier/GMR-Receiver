@@ -1,13 +1,13 @@
 #include <Arduino.h>
-#include <Motor.h>
+#include <TrainMotor.h>
 #include <RHReliableDatagram.h>
 #include <RH_RF69.h>
 #include "PacketRegister.h"
 #include "SerialCommand.h"
 
 // Radio identifiers
-#define CLIENT_ADDRESS 101
-#define SERVER_ADDRESS 202
+#define CLIENT_ADDRESS 101  // This is the controller's address
+#define SERVER_ADDRESS 202  // This is the Locomotive's address
 
 // Radio initialization
 #define RF69_FREQ 868.0
