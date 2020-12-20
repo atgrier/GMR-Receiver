@@ -72,24 +72,20 @@ void loop()
             // Serial.println(len);
             // Serial.println((char*)buf);
 
-            if (buf[0] == 'e')  // E-Stop
-                locomotive.disable(true);
-
-            else if (buf[0] == 't')  // Throttle
+            switch(buf[0])
             {
-                int spd = buf[1];
-                int dir = buf[2];
-                //Serial.print(spd);
-                //Serial.println(dir);
-                // Serial.println(spd * dir);
-                if (spd == -1)
+                case 'e' :  // E-Stop
                     locomotive.disable(true);
-                else
-                    locomotive.setSpeed(spd * dir);
-            }
+                    break;
 
-            else if (buf[0] == 'f')  // Function
-                0;
+                case 't' :  // Throttle
+                    throttle(buf);
+                    break;
+
+                case 'f' :  // Function
+                    function(buf);
+                    break;
+            }
 
             timer_disable = millis();
         }
@@ -105,4 +101,22 @@ void shutdown()
     cab_light.Off();
     noInterrupts();
     while(1) {}
+}
+
+void throttle(uint8_t* command)
+{
+    int spd = command[1];
+    int dir = command[2];
+    //Serial.print(spd);
+    //Serial.println(dir);
+    // Serial.println(spd * dir);
+    if (spd == -1)
+        locomotive.disable(true);
+    else
+        locomotive.setSpeed(spd * dir);
+}
+
+void function(uint8_t* command)
+{
+    0;
 }
