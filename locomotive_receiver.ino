@@ -72,17 +72,28 @@ void loop()
             // Serial.println(len);
             // Serial.println((char*)buf);
 
-            if (buf[0] == "drive at a speed")
+            if (buf[0] == 'e')  // E-Stop
+                locomotive.disable(true);
+
+            else if (buf[0] == 't')  // Throttle
             {
                 int spd = buf[1];
+                int dir = buf[2];
                 //Serial.print(spd);
                 //Serial.println(dir);
-                Serial.println(spd * dir);
+                // Serial.println(spd * dir);
+                if (spd == -1)
+                    locomotive.disable(true);
+                else
                 locomotive.setSpeed(spd * dir);
+            }
+
+            else if (buf[0] == 'f')  // Function
+                0;
+
                 timer_disable = millis();
             }
         }
-    }
 
     if (millis() - timer_disable > 500)
         locomotive.disable();
