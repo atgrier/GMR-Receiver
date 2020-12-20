@@ -85,15 +85,15 @@ void loop()
                 if (spd == -1)
                     locomotive.disable(true);
                 else
-                locomotive.setSpeed(spd * dir);
+                    locomotive.setSpeed(spd * dir);
             }
 
             else if (buf[0] == 'f')  // Function
                 0;
 
-                timer_disable = millis();
-            }
+            timer_disable = millis();
         }
+    }
 
     if (millis() - timer_disable > 500)
         locomotive.disable();
