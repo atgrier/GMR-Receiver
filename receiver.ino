@@ -67,7 +67,7 @@ void loop()
 
 void readTrackVoltage()
 {
-    if (analogRead(PIN_TRACK) < TRACK_THRESHOLD)
+    if (analogRead(PIN_TRACK) < BATTERY_THRESHOLD)
         shutdown();
 }
 
