@@ -27,8 +27,7 @@ void setup()
 
 void loop()
 {
-    if (analogRead(PIN_TRACK) < TRACK_THRESHOLD)
-        shutdown();
+    readTrackVoltage();
 
     if (manager.available())
     {
@@ -66,14 +65,19 @@ void loop()
         locomotive.disable();
 }
 
+void readTrackVoltage()
+{
+    if (analogRead(PIN_TRACK) < TRACK_THRESHOLD)
+        shutdown();
+}
+
 void shutdown()
 {
     locomotive.disable(true);
     cab_light.Off();
     noInterrupts();
     while (1)
-    {
-    }
+        ;
 }
 
 void throttle(uint8_t *command)
