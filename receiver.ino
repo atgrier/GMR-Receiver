@@ -1,9 +1,9 @@
 /*
-  locomotive_receiver.ino
+  receiver.ino
   Created by Alan T. Grier, 23 September 2019.
 */
 
-#include "locomotive_receiver.h"
+#include "receiver.h"
 
 void setup()
 {
