@@ -16,17 +16,21 @@
 #define RFM69_INT 7
 
 // Pin assignments
-#define PIN_TRACK -1 // IO Pin for reading track voltage
-#define PIN_LIGHT_FRONT -1
-#define PIN_LIGHT_REAR -1
-#define PIN_LIGHT_CAB -1
-#define PIN_MOTOR1 -1
-#define PIN_MOTOR2 -1
-#define PIN_FUNC1 -1
-#define PIN_FUNC2 -1
+#define PIN_TRACK A0 // IO Pin for reading track voltage
+#define PIN_LIGHT_FRONT 9
+#define PIN_LIGHT_REAR 10
+#define PIN_LIGHT_CAB 11
+#define PIN_AUX_FUNC 12
+#define PIN_MOTOR1 5
+#define PIN_MOTOR2 6
+#define PIN_FUNC1 A1
+#define PIN_FUNC2 A2
 
-// Other assignments
-#define TRACK_THRESHOLD -1 // When to disable train due to undervoltage battery
+// Battery Undervoltage Threshold
+// Target voltage is < 16 V (5S pack)
+// Voltage divider with 953 Ohm and 5500 Ohm reisitors
+//IO voltage as 16V is 2.25V, corresponding to analogRead() = 700
+#define BATTERY_THRESHOLD 700
 
 // Radio initialization
 RH_RF69 driver(RFM69_CS, RFM69_INT);
