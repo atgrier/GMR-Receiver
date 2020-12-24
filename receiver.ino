@@ -19,15 +19,15 @@ void setup()
     driver.setEncryptionKey(key);
     manager.setTimeout(50);
 
-    pinMode(PIN_TRACK, INPUT);
+    pinMode(PIN_BATTERY, INPUT);
     // pinMode(13, OUTPUT);
     // digitalWrite(13, HIGH);
-    cab_light.On();
+    light_cab.On();
 }
 
 void loop()
 {
-    readTrackVoltage();
+    readBatteryVoltage();
 
     if (manager.available())
     {
@@ -65,16 +65,16 @@ void loop()
         locomotive.disable();
 }
 
-void readTrackVoltage()
+void readBatteryVoltage()
 {
-    if (analogRead(PIN_TRACK) < BATTERY_THRESHOLD)
+    if (analogRead(PIN_BATTERY) < BATTERY_THRESHOLD)
         shutdown();
 }
 
 void shutdown()
 {
     locomotive.disable(true);
-    cab_light.Off();
+    light_cab.Off();
     noInterrupts();
     while (1)
         ;

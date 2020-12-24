@@ -16,7 +16,7 @@
 #define RFM69_INT 7
 
 // Pin assignments
-#define PIN_TRACK A0 // IO Pin for reading track voltage
+#define PIN_BATTERY A0 // IO Pin for reading battery voltage
 #define PIN_LIGHT_FRONT 9
 #define PIN_LIGHT_REAR 10
 #define PIN_LIGHT_CAB 11
@@ -38,8 +38,8 @@ RHReliableDatagram manager(driver, SERVER_ADDRESS);
 uint8_t buf[RH_RF69_MAX_MESSAGE_LEN];
 
 // Other initialization
-Lighting front_light = Lighting(PIN_LIGHT_FRONT);
-Lighting rear_light = Lighting(PIN_LIGHT_REAR);
-Lighting cab_light = Lighting(PIN_LIGHT_CAB);
-TwoPinMotor locomotive = TwoPinMotor(PIN_MOTOR1, PIN_MOTOR2, &front_light, &rear_light);
+Lighting light_front = Lighting(PIN_LIGHT_FRONT);
+Lighting light_rear = Lighting(PIN_LIGHT_REAR);
+Lighting light_cab = Lighting(PIN_LIGHT_CAB);
+TwoPinMotor locomotive = TwoPinMotor(PIN_MOTOR1, PIN_MOTOR2, &light_front, &light_rear);
 long timer_disable = millis();
