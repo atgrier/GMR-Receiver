@@ -30,7 +30,7 @@
 // Target voltage is < 16 V (5S pack)
 // Voltage divider with 953 Ohm and 5500 Ohm reisitors
 //IO voltage as 16V is 2.25V, corresponding to analogRead() = 700
-#define BATTERY_THRESHOLD 700
+#define BATTERY_THRESHOLD 712
 
 // Radio initialization
 RH_RF69 driver(RFM69_CS, RFM69_INT);
