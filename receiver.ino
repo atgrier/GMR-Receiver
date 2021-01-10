@@ -75,7 +75,6 @@ void shutdown()
 {
     locomotive.disable(true);
     light_cab.Off();
-    noInterrupts();
     while (1)
         ;
 }
