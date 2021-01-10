@@ -81,10 +81,13 @@ void shutdown()
 
 void throttle(uint8_t *command)
 {
-    int spd = command[1];
-    int dir = command[2];
-    //Serial.print(spd);
-    //Serial.println(dir);
+    int spd = (int)command[1];
+    int dir = (int)command[2] == 1 ? 1 : -1;
+
+    // Serial.println("");
+    // Serial.print(spd);
+    // Serial.print(" ");
+    // Serial.println(dir);
     // Serial.println(spd * dir);
     if (spd == -1)
         locomotive.disable(true);
