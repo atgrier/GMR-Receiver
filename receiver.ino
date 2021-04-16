@@ -11,7 +11,6 @@ void setup()
     Serial.flush();
 
     // Initialize radio
-    manager.init();
     driver.setFrequency(RF69_FREQ);
     driver.setTxPower(20, true);
     uint8_t key[] = {0xa, 0xb, 0xa, 0xd, 0xc, 0xa, 0xf, 0xe,
@@ -28,12 +27,12 @@ void loop()
 {
     // readBatteryVoltage();
 
-    if (manager.available())
+    if (radio.available())
     {
         // Serial.println("manager");
         uint8_t len = sizeof(buf);
         uint8_t from;
-        if (manager.recvfrom(buf, &len, &from))
+        if (radio.receive(buf, &len, &from))
         {
             //Serial.print("got request from : 0x");
             //Serial.print(from, HEX);
