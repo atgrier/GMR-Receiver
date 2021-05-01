@@ -43,3 +43,10 @@ Lighting light_rear = Lighting(PIN_LIGHT_REAR);
 Lighting light_cab = Lighting(PIN_LIGHT_CAB);
 TwoPinMotor locomotive = TwoPinMotor(PIN_MOTOR1, PIN_MOTOR2, &light_front, &light_rear);
 long timer_disable = millis();
+
+void setup();
+void loop();
+void readBatteryVoltage();
+void shutdown();
+void throttle(uint8_t *command);
+void throttle(uint8_t *command);
