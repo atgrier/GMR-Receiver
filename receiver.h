@@ -12,8 +12,11 @@
 #define CONTROLLER_ADDRESS 101 // Controller's address
 #define LOCOMOTIVE_ADDRESS 202 // Locomotive's address
 #define RF69_FREQ 868.0
+#define RF69_KEY new uint8_t [16] {0xa, 0xb, 0xa, 0xd, 0xc, 0xa, 0xf, 0xe, \
+								   0xd, 0xe, 0xa, 0xd, 0xb, 0xe, 0xe, 0xf}
 #define RFM69_CS 8
 #define RFM69_INT 7
+#define RFM69_RST 4
 
 // Pin assignments
 #define PIN_BATTERY A0 // IO Pin for reading battery voltage
@@ -34,7 +37,7 @@
 
 // Radio initialization
 RH_RF69 driver(RFM69_CS, RFM69_INT);
-Radio radio(LOCOMOTIVE_ADDRESS, &driver);
+Radio radio(CONTROLLER_ADDRESS, driver, RFM69_RST);
 uint8_t buf[RH_RF69_MAX_MESSAGE_LEN];
 
 // Other initialization
