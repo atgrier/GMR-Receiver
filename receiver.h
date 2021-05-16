@@ -52,4 +52,3 @@ void loop();
 void readBatteryVoltage();
 void shutdown();
 void throttle(uint8_t *command);
-void throttle(uint8_t *command);
