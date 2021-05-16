@@ -37,7 +37,7 @@
 
 // Radio initialization
 RH_RF69 driver(RFM69_CS, RFM69_INT);
-Radio radio(CONTROLLER_ADDRESS, driver, RFM69_RST);
+Radio radio(LOCOMOTIVE_ADDRESS, driver, RFM69_RST);
 uint8_t buf[RH_RF69_MAX_MESSAGE_LEN];
 
 // Other initialization
