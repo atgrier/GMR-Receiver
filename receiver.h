@@ -1,5 +1,5 @@
 /*
-  _receiver.h
+  receiver.h
   Created by Alan T. Grier, 23 September 2019.
 */
 
