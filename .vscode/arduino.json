@@ -1,6 +1,0 @@
-{
-    "board": "adafruit:avr:feather32u4",
-    "sketch": "receiver.ino",
-    "port": "COM5",
-    "output": "build\\"
-}
