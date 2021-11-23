@@ -9,11 +9,9 @@
 #include <TrainMotor.h>
 
 // Radio parameters
-#define CONTROLLER_ADDRESS 101 // Controller's address
-#define LOCOMOTIVE_ADDRESS 202 // Locomotive's address
+#define CONTROLLER_ADDRESS 1 // Controller's address
+#define LOCOMOTIVE_ADDRESS 22 // Locomotive's address
 #define RF69_FREQ 868.0
-#define RF69_KEY new uint8_t [16] {0xa, 0xb, 0xa, 0xd, 0xc, 0xa, 0xf, 0xe, \
-								   0xd, 0xe, 0xa, 0xd, 0xb, 0xe, 0xe, 0xf}
 #define RFM69_CS 8
 #define RFM69_INT 7
 #define RFM69_RST 4

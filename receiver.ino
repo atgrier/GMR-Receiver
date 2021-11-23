@@ -44,7 +44,7 @@ void setup()
 {
   // Initialize radio
   Serial.begin(115200);
-  radio.init(RF69_FREQ, RF69_KEY);
+  radio.init(RF69_FREQ);
 
   pinMode(PIN_BATTERY, INPUT);
   // pinMode(13, OUTPUT);
