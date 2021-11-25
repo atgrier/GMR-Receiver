@@ -4,12 +4,13 @@
 */
 
 #include <Arduino.h>
-#include <Radio.h>
 #include <RH_RF69.h>
+#include <Radio.h>
 #include <TrainMotor.h>
+#include <Locomotive.h>
 
 // Radio parameters
-#define CONTROLLER_ADDRESS 1 // Controller's address
+#define CONTROLLER_ADDRESS 1  // Controller's address
 #define LOCOMOTIVE_ADDRESS 22 // Locomotive's address
 #define RF69_FREQ 868.0
 #define RFM69_CS 8
@@ -36,17 +37,13 @@
 // Radio initialization
 RH_RF69 driver(RFM69_CS, RFM69_INT);
 Radio radio(LOCOMOTIVE_ADDRESS, driver, RFM69_RST);
-uint8_t buf[RH_RF69_MAX_MESSAGE_LEN];
 
-// Other initialization
-Lighting light_front = Lighting(PIN_LIGHT_FRONT);
-Lighting light_rear = Lighting(PIN_LIGHT_REAR);
-Lighting light_cab = Lighting(PIN_LIGHT_CAB);
-TwoPinMotor locomotive = TwoPinMotor(PIN_MOTOR1, PIN_MOTOR2, &light_front, &light_rear);
-long timer_disable = millis();
+// Train initialization
+Lighting light_front(PIN_LIGHT_FRONT);
+Lighting light_rear(PIN_LIGHT_REAR);
+Lighting light_cab(PIN_LIGHT_CAB);
+TwoPinMotor motor(PIN_MOTOR1, PIN_MOTOR2, &light_front, &light_rear);
+LocomotiveReceiver locomotive(LOCOMOTIVE_ADDRESS, &motor, &light_cab, &radio);
 
-void setup();
-void loop();
-void readBatteryVoltage();
-void shutdown();
-void throttle(uint8_t *command);
+// Miscellaneous initialization
+long timer_disable;
